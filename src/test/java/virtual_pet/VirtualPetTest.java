@@ -17,17 +17,10 @@ public class VirtualPetTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @Test
-    void greetingShouldReturnStatus() {
-        VirtualPet underTest = new VirtualPet("Kame", 8, 6, 7, 9);
-        String expectedOutput = "Hi, nice to meet you! My name is Kame the turtle! Please take care of me!";
-        underTest.greeting();
-        assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
-    }
 
     @Test
     void hungerLevelShouldGoToWhenFeed() {
-        VirtualPet underTest = new VirtualPet("Kame", 8, 6, 7, 9);
+        VirtualPet underTest = new VirtualPet("test");
         underTest.feed();
         underTest.tick();
         assertEquals(11, underTest.getHunger());
@@ -35,7 +28,7 @@ public class VirtualPetTest {
 
     @Test
     void thirstLevelShouldGoToWhenDrink() {
-        VirtualPet underTest = new VirtualPet("Kame", 8, 6, 7, 9);
+        VirtualPet underTest = new VirtualPet("test");
         underTest.water();
         underTest.tick();
         assertEquals(10, underTest.getThirst());
@@ -43,7 +36,7 @@ public class VirtualPetTest {
 
     @Test
     void hygieneLevelShouldGoToWhenClean() {
-        VirtualPet underTest = new VirtualPet("Kame", 8, 6, 7, 9);
+        VirtualPet underTest = new VirtualPet("test");
         underTest.nasty();
         underTest.tick();
         assertEquals(9, underTest.getHygiene());
@@ -51,7 +44,7 @@ public class VirtualPetTest {
 
     @Test
     void funLevelShouldGoToWhenPlay() {
-        VirtualPet underTest = new VirtualPet("Kame", 8, 6, 7, 9);
+        VirtualPet underTest = new VirtualPet("test");
         underTest.boredom();
         underTest.tick();
         assertEquals(12, underTest.getFun());

@@ -1,29 +1,70 @@
 package virtual_pet;
 
-import virtual_pet.VirtualPet;
-
 import java.util.ArrayList;
 
-public class VirtualPetShelter {
+ class VirtualPetShelter {
 
-    private ArrayList<VirtualPet> shelter;
+    public ArrayList<VirtualPet> shelter;
 
     public VirtualPetShelter() {
         shelter = new ArrayList<>();
-        shelter.add(new VirtualPet("Sora", 6, 7,10, 9));
-        shelter.add(new VirtualPet("Ume", 8, 4, 6, 3));
-        shelter.add(new VirtualPet("Chika",10, 7, 7, 5));
+        shelter.add(new OrganicFox("Kitsune", 7, 5, 6, 6));
+        shelter.add(new OrganicKappa("Ume", 5,9,9,4));
+        shelter.add(new RobotFox("Chika", 6, 6));
+        shelter.add(new RobotKappa("Maiki", 8, 7));
     }
+
+    public void adoptPet(String pet) {
+        for(int i=0;i<shelter.size();i++){
+            if(shelter.get(i).getName().equalsIgnoreCase(pet)){
+                shelter.remove(i);
+            }
+        }
+    }
+
+    //Make this method takes in a VirtualPet, NOT  a String!
 
     public void admitPet(VirtualPet pet) {
         shelter.add(pet);
     }
 
-    public void feedAll() {
-        for(VirtualPet pet: shelter){
-            pet.feed();
+
+            public void feedAll() {
+                for (VirtualPet pet : shelter) {
+                    if (pet instanceof OrganicPet) {
+                        pet.feed();
+                    }
+                }
+            }
+
+
+        public void giveWater() {
+            for (VirtualPet pet : shelter) {
+                if (pet instanceof OrganicPet) {
+                    pet.water();
+                }
+            }
+        }
+
+        public void cleanAll() {
+            for (VirtualPet pet : shelter) {
+                pet.nasty();
+            }
+        }
+
+        //Make sure the RoboticPet class extends VirtualPet
+        public void giveOil(){
+                for (VirtualPet pet: shelter) {
+                    if(pet instanceof RoboticPet) {
+
+                    }
+                }
         }
 
 
-    }
-}
+
+ }
+
+
+
+

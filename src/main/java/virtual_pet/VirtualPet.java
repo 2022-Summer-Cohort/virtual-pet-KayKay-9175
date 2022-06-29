@@ -1,9 +1,9 @@
 package virtual_pet;
 
-public class VirtualPet {
+import java.util.Random;
 
+public class VirtualPet{
     private String name;
-
     private int hunger;
 
     private int hygiene;
@@ -12,13 +12,15 @@ public class VirtualPet {
 
     private int fun;
 
-    public VirtualPet(String name, int hunger, int hygiene, int thirst, int fun) {
+    public VirtualPet(String name) {
+        Random x = new Random();
         this.name = name;
-        this.hunger = hunger;
-        this.hygiene = hygiene;
-        this.thirst = thirst;
-        this.fun = fun;
+        this.hunger = x.nextInt(10);
+        this.hygiene = x.nextInt(10);
+        this.thirst = x.nextInt(10);
+        this.fun = x.nextInt(10);
     }
+
 
     public String getName() {
         return name;
@@ -40,7 +42,6 @@ public class VirtualPet {
         return fun;
     }
 
-
     public void tick() {
         hunger--;
         thirst--;
@@ -49,20 +50,20 @@ public class VirtualPet {
 
 
         if (hunger < 5) {
-            System.out.println("Kame is hungry. Feed the guy!");
+            System.out.println(name + "is hungry. Feed the guy!");
 
 
         }
         if (thirst < 5) {
-            System.out.println("Kame is thirsty. Get him some water!");
+            System.out.println(name + "is thirsty. Get him some water!");
         }
 
         if(hygiene < 5) {
-            System.out.println("Kame stinks! Bathe him! ");
+            System.out.println(name + "stinks! Bathe the pet! ");
         }
 
         if (fun < 5) {
-            System.out.println("Kame is bored. Play with him!");
+            System.out.println(name + "is bored. Play with him!");
         }
 
         }
@@ -71,13 +72,11 @@ public class VirtualPet {
     public void water() {thirst += 4;}
     public void nasty() {hygiene += 4;}
     public void boredom() {fun += 4;}
-    public void greeting() {
-        System.out.println("Hi, nice to meet you! My name is " + name + " the turtle! Please take care of me! ");
-    }
+
     public void showStatus() {
-        System.out.println("Kame's Hunger:" + hunger);
-        System.out.println("Kame's Hygiene:" + hygiene);
-        System.out.println("Kame's Thirst:" + thirst);
-        System.out.println("Kame's Fun:" + fun);
+        System.out.println("Hunger:" + hunger);
+        System.out.println("Hygiene:" + hygiene);
+        System.out.println("Thirst:" + thirst);
+        System.out.println("Fun:" + fun);
     }
 }
