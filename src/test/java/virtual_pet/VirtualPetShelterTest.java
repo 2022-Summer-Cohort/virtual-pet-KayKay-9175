@@ -1,7 +1,5 @@
 package virtual_pet;
 
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,56 +21,38 @@ public class VirtualPetShelterTest {
     }
 
     @Test
-    public void addPetWhenAdmitted() {
+    public void addPetWhenAdmitted(VirtualPet pet) {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.admitPet();
+        underTest.admitPet(pet);
         assertEquals(4, underTest.shelter.size());
     }
 
     @Test
-    public void shouldFeedAllOrganicPet() {
+    public void shouldFeedChargeAllPets() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPet pet = new VirtualPet("X");
-        underTest.feedAll();
-        assertEquals(8, pet.getHunger());
+        underTest.feedChargeAll();
+        assertEquals(8, underTest.pet.feed);
     }
 
     @Test
-    public void shouldWaterAllOrganicPet() {
+    public void shouldWaterOilAllPet() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPet pet = new VirtualPet("X");
-        underTest.giveWater();
-        assertEquals(8, pet.getThirst());
+        underTest.giveWaterOilAll();
+        assertEquals(8, getThirst());
     }
 
     @Test
     public void shouldCleanAllPet() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPet pet = new VirtualPet("X");
         underTest.cleanAll();
-        assertEquals(8, pet.getHygiene());
+        assertEquals(8, underTest.getHygiene());
     }
-
     @Test
-    public void shouldChargeFoxRobot() {
-        RobotFox underTest = new RobotFox("Chika", 6, 6);
-        underTest.recharge();
-        assertEquals(10, underTest.getBatteryLevel());
-
-    }
-
-    @Test
-    public void shouldChargeKappaRobot() {
-        RobotKappa underTest = new RobotKappa("Maiki", 8, 7);
-        underTest.recharge();
-        assertEquals(10, underTest.getBatteryLevel());
-
-    }
-
-    @Test
-    public void shouldGiveOilToAllRoboticPets() {
+    public void shouldHaveFunAll() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.giveOil();
-        assertEquals(10, underTest.getOilLevel());
+        underTest.haveFun();
+        assertEquals(8, underTest. ());
+
     }
-}
+    }
+
