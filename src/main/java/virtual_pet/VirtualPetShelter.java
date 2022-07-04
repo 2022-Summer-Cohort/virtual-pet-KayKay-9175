@@ -8,10 +8,10 @@ class VirtualPetShelter {
 
     public VirtualPetShelter() {
         shelter = new ArrayList<>();
-        shelter.add(new OrganicFox("Kitsune", 7, 5, 6, 6));
-        shelter.add(new OrganicKappa("Ume", 5, 9, 9, 4));
-        shelter.add(new RobotFox("Chika", 6, 6, 5, 7));
-        shelter.add(new RobotKappa("Maiki", 8, 7, 5, 8));
+        shelter.add(new OrganicFox("Kitsune", "Organic" ,7, 5, 6, 6));
+        shelter.add(new OrganicKappa("Ume", "Organic", 5, 9, 9, 4));
+        shelter.add(new RobotFox("Chika", "Robotic", 6, 5, 7,8));
+        shelter.add(new RobotKappa("Maiki", "Robotic", 7, 5, 8, 5));
     }
 
     public void adoptPet(String pet) {
@@ -24,12 +24,36 @@ class VirtualPetShelter {
 
     //Make this method takes in a VirtualPet, NOT  a String!
 
+
+        VirtualPet pet1 = new VirtualPet() {
+            @Override
+            public void showStatus() {
+
+            }
+
+            @Override
+            public void createPet() {
+
+            }
+
+            @Override
+            public void tick() {
+
+            }
+        };
+
+
+
+
+
+
     public void admitPet(VirtualPet pet) {
         shelter.add(pet);
+
     }
 
 
-    public void feedChargeAll() {
+    public int feedChargeAll() {
         for (VirtualPet pet : shelter) {
             if (pet instanceof OrganicPet) {
                 ((OrganicPet) pet).feed();
@@ -39,10 +63,11 @@ class VirtualPetShelter {
             }
         }
 
+        return 7;
     }
 
 
-    public void giveWaterOilAll() {
+    public int giveWaterOilAll() {
         for (VirtualPet pet : shelter) {
             if (pet instanceof OrganicPet) {
                 ((OrganicPet) pet).water();
@@ -51,9 +76,10 @@ class VirtualPetShelter {
                 ((RoboticPet) pet).oil();
             }
         }
+        return 5;
     }
 
-    public void cleanAll() {
+    public int cleanAll() {
         for (VirtualPet pet : shelter) {
             if (pet instanceof OrganicPet) {
                 ((OrganicPet) pet).nasty();
@@ -62,6 +88,7 @@ class VirtualPetShelter {
                 ((RoboticPet) pet).fresh();
             }
         }
+        return 5;
     }
 
     public void haveFun() {
@@ -97,7 +124,10 @@ class VirtualPetShelter {
             }
         }
 
-    }
+
+
+}
+
 
 
 

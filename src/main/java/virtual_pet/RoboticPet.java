@@ -13,8 +13,8 @@ protected String name;
 
     private int clean;
 
-    public RoboticPet(String name, int batteryLevel, int oilLevel, int play, int clean) {
-        super(name);
+    public RoboticPet(String name, String petType, int batteryLevel, int oilLevel, int play, int clean) {
+        super(name, petType);
         this.batteryLevel = batteryLevel;
         this.oilLevel = oilLevel;
         this.play = play;
@@ -60,6 +60,7 @@ protected String name;
         batteryLevel--;
         play--;
     }
+    public abstract void createPet();
 }
 
 

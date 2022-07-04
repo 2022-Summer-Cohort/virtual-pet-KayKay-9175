@@ -1,7 +1,7 @@
 package virtual_pet;
 
 public abstract class OrganicPet extends VirtualPet {
-   private int hunger;
+    private int hunger;
 
     private int hygiene;
 
@@ -10,28 +10,29 @@ public abstract class OrganicPet extends VirtualPet {
     private int fun;
 
 
-    public OrganicPet(String name, int hunger, int hygiene, int thirst, int fun) {
-        super(name);
+    public OrganicPet(String name, String petType, int hunger, int hygiene, int thirst, int fun) {
+        super(name, petType);
         this.hunger = hunger;
         this.hygiene = hygiene;
         this.thirst = thirst;
         this.fun = fun;
-        }
-        public int getHunger() {
-            return hunger;
-        }
+    }
 
-        public int getHygiene() {
-            return hygiene;
-        }
+    public int getHunger() {
+        return hunger;
+    }
 
-        public int getThirst() {
-            return thirst;
-        }
+    public int getHygiene() {
+        return hygiene;
+    }
 
-        public int getFun() {
-            return fun;
-        }
+    public int getThirst() {
+        return thirst;
+    }
+
+    public int getFun() {
+        return fun;
+    }
 
 
     public void tick() {
@@ -47,9 +48,24 @@ public abstract class OrganicPet extends VirtualPet {
         System.out.println("Thirst:" + thirst);
         System.out.println("Fun:" + fun);
     }
-    public void feed() {hunger += 4;}
-    public void water() {thirst += 4;}
-    public void nasty() {hygiene += 4;}
-    public void boredom() {fun += 4;}
-}
 
+    public void feed() {
+        hunger += 4;
+    }
+
+    public void water() {
+        thirst += 4;
+    }
+
+    public void nasty() {
+        hygiene += 4;
+    }
+
+    public void boredom() {
+        fun += 4;
+    }
+
+
+    public abstract void createPet();
+
+}

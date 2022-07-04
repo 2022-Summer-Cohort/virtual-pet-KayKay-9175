@@ -4,8 +4,8 @@ public class RobotFox extends RoboticPet {
 
 
 
-    public RobotFox(String name, int batteryLevel, int oilLevel, int play, int clean) {
-        super(name, batteryLevel, oilLevel, play, clean);
+    public RobotFox(String name, String petType, int batteryLevel, int oilLevel, int play, int clean) {
+        super(name, petType, batteryLevel, oilLevel, play, clean);
 
 
 
@@ -13,6 +13,11 @@ public class RobotFox extends RoboticPet {
 
     @Override
     public void showStatus() {
+
+    }
+
+    @Override
+    public void createPet() {
 
     }
 }
