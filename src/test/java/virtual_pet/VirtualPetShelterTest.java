@@ -15,13 +15,6 @@ public class VirtualPetShelterTest {
     }
 
     @Test
-    public void addPetWhenAdmitted(VirtualPet pet) {
-        VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.admitPet(pet);
-        assertEquals(4, underTest.shelter.size());
-    }
-
-    @Test
     public void shouldFeedChargeAllPets() {
         VirtualPetShelter underTest = new VirtualPetShelter();
         assertEquals(7, underTest.feedChargeAll());
@@ -35,10 +28,13 @@ public class VirtualPetShelterTest {
         underTest.giveWaterOilAll();
 
     }
+
     @Test
     public void shouldCleanAllPet() {
         VirtualPetShelter underTest = new VirtualPetShelter();
         assertEquals(5, underTest.cleanAll());
         underTest.cleanAll();
     }
+
+
 }

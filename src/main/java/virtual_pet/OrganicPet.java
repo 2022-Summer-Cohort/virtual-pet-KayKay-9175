@@ -66,6 +66,6 @@ public abstract class OrganicPet extends VirtualPet {
     }
 
 
-    public abstract void createPet();
+
 
 }

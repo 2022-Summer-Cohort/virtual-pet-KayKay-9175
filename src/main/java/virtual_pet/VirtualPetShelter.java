@@ -25,28 +25,6 @@ class VirtualPetShelter {
     //Make this method takes in a VirtualPet, NOT  a String!
 
 
-        VirtualPet pet1 = new VirtualPet() {
-            @Override
-            public void showStatus() {
-
-            }
-
-            @Override
-            public void createPet() {
-
-            }
-
-            @Override
-            public void tick() {
-
-            }
-        };
-
-
-
-
-
-
     public void admitPet(VirtualPet pet) {
         shelter.add(pet);
 
@@ -120,13 +98,15 @@ class VirtualPetShelter {
     public void showStatusForAll() {
         for (VirtualPet pet : shelter) {
             pet.showStatus();
-
             }
         }
-
-
-
+    
 }
+
+
+
+
+
 
 
 

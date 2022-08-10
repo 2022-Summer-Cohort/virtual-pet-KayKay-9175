@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public class RobotKappa extends RoboticPet {
+public class RobotKappa extends RoboticPet implements Walking{
 
 
     public RobotKappa(String name, String petType, int batteryLevel, int oilLevel, int play, int clean) {
@@ -10,11 +10,7 @@ public class RobotKappa extends RoboticPet {
     }
 
     @Override
-    public void showStatus() {
-    }
-
-    @Override
-    public void createPet() {
+    public void walk() {
 
     }
 }

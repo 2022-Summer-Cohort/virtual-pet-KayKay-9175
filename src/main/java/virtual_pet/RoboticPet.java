@@ -2,9 +2,9 @@ package virtual_pet;
 
 import java.util.Random;
 
-public abstract class RoboticPet extends VirtualPet  {
+public abstract class RoboticPet extends VirtualPet {
 
-protected String name;
+    protected String name;
     private int batteryLevel;
 
     private int oilLevel;
@@ -40,11 +40,18 @@ protected String name;
     public void recharge() {
         batteryLevel += 4;
     }
-    public void oil() {oilLevel += 4; }
 
-    public void happy() {play +=4;}
+    public void oil() {
+        oilLevel += 4;
+    }
 
-    public void fresh() {clean +=4;}
+    public void happy() {
+        play += 4;
+    }
+
+    public void fresh() {
+        clean += 4;
+    }
 
     public void showStatus() {
         System.out.println("Battery Level:" + batteryLevel);
@@ -60,9 +67,7 @@ protected String name;
         batteryLevel--;
         play--;
     }
-    public abstract void createPet();
 }
-
 
 
 

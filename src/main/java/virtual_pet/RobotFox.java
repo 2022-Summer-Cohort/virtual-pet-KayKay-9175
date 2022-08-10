@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public class RobotFox extends RoboticPet {
+public class RobotFox extends RoboticPet implements Walking {
 
 
 
@@ -11,16 +11,16 @@ public class RobotFox extends RoboticPet {
 
     }
 
+
     @Override
-    public void showStatus() {
+    public void walk() {
 
     }
 
-    @Override
-    public void createPet() {
+//    @Override
+//    public void createPet() {
 
     }
-}
 
 
 

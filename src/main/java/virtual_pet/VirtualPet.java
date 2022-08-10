@@ -29,7 +29,7 @@ public abstract class VirtualPet{
 
     public abstract void showStatus();
 
-    public abstract void createPet();
+
     public abstract void tick();
 
 
