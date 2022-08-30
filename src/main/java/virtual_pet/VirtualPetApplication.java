@@ -8,102 +8,137 @@ public class VirtualPetApplication {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to Virtual Pet!");
-        System.out.println("Press 1 to feed/charge all");
-        System.out.println("Press 2 to give water. ");
-        System.out.println("Press 3 to bathe all. ");
-        System.out.println("Press 4 to play with all the animals. ");
-        System.out.println("Press 5 to chose a pet. ");
-        System.out.println("Press 6 to show stats.");
-        System.out.println("Press 7 to admit a pet.");
-        System.out.println("Press 8 to walk pet ");
-        System.out.println("Press 9 to adopt a pet ");
-        VirtualPetShelter shelter = new VirtualPetShelter();
-        int keyPress;
-
-        do {
-            keyPress = input.nextInt();
-
-            switch (keyPress) {
-                case 1:
-                    input.nextLine();
-                    shelter.feedChargeAll();
-                    System.out.println("美味しい Yummy! You feed all the pets! ");
-                    break;
-
-                case 2:
-                    input.nextLine();
-                    shelter.giveWaterOilAll();
-                    System.out.println("ありがとう Thank you! You gave water/oil to all the pets!");
-                    break;
-
-                case 3:
-                    input.nextLine();
-                   shelter.cleanAll();
-                    System.out.println("綺麗 It's good to be clean! ");
-                    break;
-
-                case 4:
-                    input.nextLine();
-                   shelter.haveFun();
-                    System.out.println("楽しい I had so much fun! ");
-                    break;
-
-                case 5:
-                    input.nextLine();
-                    System.out.println("Enter name of pet you would like to play with");
-                    System.out.println("Kitsune the Fox");
-                    System.out.println("Ume the Kappa");
-                    System.out.println("Chika the Robotic Fox");
-                    System.out.println("Maiki the Robotic Kappa");
-                    String name = input.nextLine();
-                    shelter.findPetByName(name);
-                    System.out.println("You picked" + "" + name+ "! Have fun!");
-                    break;
-                case 6:
-                    input.nextLine();
-                    shelter.showStatusForAll();
-                    break;
-                case 7:
-                    input.nextLine();
-                    System.out.println("What's the name of your new pet?");
-                    String newName = input.nextLine();
-                    System.out.println("What type of pet is it? ");
-                    input.nextLine();
-                    System.out.println("1. Organic?");
-                    System.out.println("2. Robotic?");
-                    input.nextLine();
-                    System.out.println("Congrats! " + newName + " is now part of the shelter!");
-                    break;
-                case 8:
-                    input.nextLine();
-                    System.out.println("Thank you for the walk!");
-                    break;
-                case 9:
-                    input.nextLine();
-                    System.out.println("Which pet do you want to adopt?");
-                    System.out.println("Kitsune the Fox");
-                    System.out.println("Ume the Kappa");
-                    System.out.println("Chika the Robotic Fox");
-                    System.out.println("Maiki the Robotic Kappa");
-                    String name1 = input.nextLine();
-                    shelter.findPetByName(name1);
-                    System.out.println("You adopted " + "" +  name1 + "! Please take care of your pet!");
-                    break;
-
-
-
-                default:
-                    System.out.println("Please pick from the list above");
+        VirtualPet petOne = new OrganicFox("Maiki");
+        VirtualPet petTwo = new OrganicFox("Kitsune");
+        VirtualPet petThree = new RobotFox("Kamina");
+        VirtualPet petFour = new RobotFox("Ryu");
+        VirtualPet petFive = new OrganicKappa("Umi");
+        VirtualPet petSix = new OrganicKappa("Nami");
+        VirtualPet petSeven = new RobotKappa("Mizu");
+        VirtualPet petEight = new RobotKappa("Sui");
+        VirtualPetShelter petShelter = new VirtualPetShelter();
+        petShelter.addPetToShelter(petOne);
+        petShelter.addPetToShelter(petTwo);
+        petShelter.addPetToShelter(petThree);
+        petShelter.addPetToShelter(petFour);
+        petShelter.addPetToShelter(petFive);
+        petShelter.addPetToShelter(petSix);
+        petShelter.addPetToShelter(petSeven);
+        petShelter.addPetToShelter(petEight);
+        System.out.println("Welcome to the Virtual Pet Shelter!");
+        while (true) {
+            System.out.println("Current Status of all Pets in Shelter:");
+            System.out.println("Name\t\t\t|Description  |Health\t\t |Happiness\t\t|Hunger\t\t   |Thirst\t\t  |Boredom\t\t |Cage Dirtiness");
+            System.out.println("---------------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
+            for (VirtualPet virtualPet : petShelter.getVirtualPets().values()) {
+                if (virtualPet instanceof OrganicFox) {
+                    System.out.println(virtualPet.getVirtualPetName() + "\t\t\t\t" + virtualPet.getVirtualPetDescriptor() + "\t\t\t" + virtualPet.getHealthLevel() + "\t\t\t " +
+                            virtualPet.getHappinessLevel() + "\t\t\t\t " + ((OrganicFox) virtualPet).getHungerLevel() + "\t\t\t " + ((OrganicFox) virtualPet).getThirstLevel() + "\t\t\t\t" +
+                            virtualPet.getBoredomLevel() + "\t\t\t\t" + ((OrganicFox) virtualPet).cageDirtiness);
+                }
             }
-            shelter.tickAll();
-
-        } while(true);
-
-
-
+            System.out.println("Name\t\t\t|Description  |Health\t\t |Happiness\t\t|Maintenance\t|Boredom");
+            System.out.println("---------------|--------------|--------------|--------------|--------------|--------------|");
+            for (VirtualPet virtualPet : petShelter.getVirtualPets().values()) {
+                if (virtualPet instanceof RobotFox) {
+                    System.out.println(virtualPet.getVirtualPetName() + "\t\t\t" + virtualPet.getVirtualPetDescriptor() + "\t\t\t" + virtualPet.getHealthLevel() + "\t\t\t " +
+                            virtualPet.getHappinessLevel() + "\t\t\t\t " + ((RobotFox) virtualPet).getMaintenanceLevel() + "\t\t\t " +
+                            virtualPet.getBoredomLevel());
+                }
+            }
+            System.out.println("Name\t\t\t|Description  |Health\t\t |Happiness\t\t|Hunger\t\t   |Thirst\t\t  |Boredom\t\t");
+            System.out.println("---------------|--------------|--------------|--------------|--------------|--------------|--------------|");
+            for (VirtualPet virtualPet : petShelter.getVirtualPets().values()) {
+                if (virtualPet instanceof OrganicKappa) {
+                    System.out.println(virtualPet.getVirtualPetName() + "\t\t\t\t" + virtualPet.getVirtualPetDescriptor() + "\t\t\t" + virtualPet.getHealthLevel() + "\t\t\t " +
+                            virtualPet.getHappinessLevel() + "\t\t\t\t " + ((OrganicKappa) virtualPet).getHungerLevel() + "\t\t\t " + ((OrganicKappa) virtualPet).getThirstLevel() + "\t\t\t\t" +
+                            virtualPet.getBoredomLevel());
+                }
+            }
+            System.out.println("Name\t\t\t|Description  |Health\t\t |Happiness\t\t|Maintenance\t|Boredom");
+            System.out.println("---------------|--------------|--------------|--------------|--------------|--------------|");
+            for (VirtualPet virtualPet : petShelter.getVirtualPets().values()) {
+                if (virtualPet instanceof RobotKappa) {
+                    System.out.println(virtualPet.getVirtualPetName() + "\t\t\t" + virtualPet.getVirtualPetDescriptor() + "\t\t\t" + virtualPet.getHealthLevel() + "\t\t\t " +
+                            virtualPet.getHappinessLevel() + "\t\t\t\t " + ((RobotKappa) virtualPet).getMaintenanceLevel() + "\t\t\t " +
+                            virtualPet.getBoredomLevel());
+                }
+            }
+            System.out.println("\nWhat would you like to do with the pets?\n");
+            System.out.println("1: Feed all Organic Pets in Shelter.");
+            System.out.println("2: Give Water to all Organic Pets in Shelter.");
+            System.out.println("3: Oil(Maintenance) all Robot Pets in Shelter.");
+            System.out.println("4: Play with all Kappa in the Shelter.");
+            System.out.println("5: Walk all Foxes in the Shelter.");
+            System.out.println("6: Clean all Organic Foxes' Cages.");
+            System.out.println("7: Adopt a pet.");
+            System.out.println("8: Admit a pet to the Shelter.");
+            System.out.println("9: Quit.");
+            int userChoice = input.nextInt();
+            if (userChoice == 1) {
+                petShelter.feedAllOrganicPetsAtOnce();
+            }
+            if (userChoice == 2) {
+                petShelter.waterAllOrganicPetsAtOnce();
+            }
+            if (userChoice == 3) {
+                petShelter.oilALlRobotsAtOnce();
+            }
+            if (userChoice == 4) {
+                petShelter.playWithAllKappaAtOnce();
+            }
+            if (userChoice == 5) {
+                petShelter.walkAllFoxAtOnce();
+            }
+            if (userChoice == 6) {
+                petShelter.cleanAllOrganicFoxCagesAtOnce();
+            }
+            if (userChoice == 7) {
+                System.out.println("\nYou would like to adopt a pet out of the shelter.\nThese are the pets eligible:");
+                for (VirtualPet virtualPet : petShelter.getVirtualPets().values()) {
+                    System.out.println(virtualPet.getVirtualPetName() + "\t\t|" + virtualPet.getVirtualPetDescriptor());
+                }
+                System.out.println("Please type in which pet to adopt:");
+                String userAdoptionChoice = input.next();
+                petShelter.removePetFromShelter(petShelter.returnSpecificPetGivenItsName(userAdoptionChoice));
+                System.out.println(userAdoptionChoice + " has found a happy home!");
+            }
+            if (userChoice == 8) {
+                System.out.println("\nYou would like to add a pet to the Shelter.\nPlease type in the name of the pet:");
+                String userPetToAddName = input.next();
+                input.nextLine();
+                System.out.println("Please indicate what kind of Pet " + userPetToAddName + " is:");
+                System.out.println("1: Organic Fox.");
+                System.out.println("2: Robot Fox.");
+                System.out.println("3: Organic Kappa.");
+                System.out.println("4: Robot Kappa.");
+                int userAdoptChoice = input.nextInt();
+                if (userAdoptChoice == 1) {
+                    VirtualPet userPetToAdd = new OrganicFox(userPetToAddName);
+                    petShelter.addPetToShelter(userPetToAdd);
+                }
+                if (userAdoptChoice == 2) {
+                    VirtualPet userPetToAdd = new RobotFox(userPetToAddName);
+                    petShelter.addPetToShelter(userPetToAdd);
+                }
+                if (userAdoptChoice == 3) {
+                    VirtualPet userPetToAdd = new OrganicKappa(userPetToAddName);
+                    petShelter.addPetToShelter(userPetToAdd);
+                }
+                if (userAdoptChoice == 4) {
+                    VirtualPet userPetToAdd = new RobotKappa(userPetToAddName);
+                    petShelter.addPetToShelter(userPetToAdd);
+                }
+            }
+            if (userChoice == 9) {
+                System.out.println("\nThanks for helping at the Shelter! Bye!");
+                break;
+            }
+            petShelter.tickForAllPetsAtOnce();
+        }
     }
-    }
+
+}
 
 
 

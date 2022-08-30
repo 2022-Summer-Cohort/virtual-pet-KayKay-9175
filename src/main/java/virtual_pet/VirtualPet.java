@@ -3,34 +3,45 @@ package virtual_pet;
 import java.util.Random;
 
 public abstract class VirtualPet{
-    protected String name;
+    protected int happinessLevel;
+    protected int healthLevel;
+    protected String virtualPetName;
+    protected String virtualPetDescriptor;
+    protected int boredomLevel;
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int maintenanceLevel;
 
-    protected String petType;
-
-
-    public VirtualPet(String name, String petType) {
-        this.name = name;
-        this.petType = petType;
-
+    public VirtualPet(String virtualPetName, String virtualPetDescriptor) {
+        this.virtualPetName = virtualPetName;
+        this.virtualPetDescriptor = virtualPetDescriptor;
+        this.boredomLevel = 15;
+        this.healthLevel = 100;
+        this.happinessLevel = 75;
     }
 
-    public VirtualPet() {
-
+    public int getHappinessLevel() {
+        return happinessLevel;
     }
 
-
-    public String getName() {
-        return name;
+    public int getHealthLevel() {
+        return healthLevel;
     }
 
-    public String getPetType() {
-        return petType;
+    public String getVirtualPetName() {
+        return virtualPetName;
     }
 
-    public abstract void showStatus();
+    public String getVirtualPetDescriptor() {
+        return virtualPetDescriptor;
+    }
 
+    public int getBoredomLevel() {
+        return boredomLevel;
+    }
 
     public abstract void tick();
 
+    public abstract int playWithPet();
 
 }

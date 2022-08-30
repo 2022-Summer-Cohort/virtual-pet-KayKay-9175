@@ -1,106 +1,89 @@
 package virtual_pet;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 class VirtualPetShelter {
 
-    public ArrayList<VirtualPet> shelter;
+    private Map<String, VirtualPet> virtualPets = new HashMap<>();
 
-    public VirtualPetShelter() {
-        shelter = new ArrayList<>();
-        shelter.add(new OrganicFox("Kitsune", "Organic" ,7, 5, 6, 6));
-        shelter.add(new OrganicKappa("Ume", "Organic", 5, 9, 9, 4));
-        shelter.add(new RobotFox("Chika", "Robotic", 6, 5, 7,8));
-        shelter.add(new RobotKappa("Maiki", "Robotic", 7, 5, 8, 5));
+
+    public Map<String, VirtualPet> getVirtualPets() {
+        return virtualPets;
     }
 
-    public void adoptPet(String pet) {
-        for (int i = 0; i < shelter.size(); i++) {
-            if (shelter.get(i).getName().equalsIgnoreCase(pet)) {
-                shelter.remove(i);
+    public Collection getVirtualPetCollection() {
+        return virtualPets.keySet();
+    }
+
+    public VirtualPet returnSpecificPetGivenItsName(String petsName) {
+        return virtualPets.get(petsName);
+    }
+
+    public void addPetToShelter(VirtualPet petToAdd) {
+        virtualPets.put(petToAdd.getVirtualPetName(),petToAdd);
+    }
+
+    public void removePetFromShelter(VirtualPet petToRemove) {
+        virtualPets.remove(petToRemove.getVirtualPetName());
+    }
+
+    public void walkAllFoxAtOnce() {
+        for (VirtualPet pets : virtualPets.values()){
+            if (pets instanceof VirtualFox){
+                pets.playWithPet();
             }
         }
     }
 
-    //Make this method takes in a VirtualPet, NOT  a String!
-
-
-    public void admitPet(VirtualPet pet) {
-        shelter.add(pet);
-
-    }
-
-
-    public int feedChargeAll() {
-        for (VirtualPet pet : shelter) {
-            if (pet instanceof OrganicPet) {
-                ((OrganicPet) pet).feed();
-            }
-            if (pet instanceof RoboticPet) {
-                ((RoboticPet) pet).recharge();
-            }
-        }
-
-        return 7;
-    }
-
-
-    public int giveWaterOilAll() {
-        for (VirtualPet pet : shelter) {
-            if (pet instanceof OrganicPet) {
-                ((OrganicPet) pet).water();
-            }
-            if (pet instanceof RoboticPet) {
-                ((RoboticPet) pet).oil();
-            }
-        }
-        return 5;
-    }
-
-    public int cleanAll() {
-        for (VirtualPet pet : shelter) {
-            if (pet instanceof OrganicPet) {
-                ((OrganicPet) pet).nasty();
-            }
-            if (pet instanceof RoboticPet) {
-                ((RoboticPet) pet).fresh();
-            }
-        }
-        return 5;
-    }
-
-    public void haveFun() {
-        for (VirtualPet pet : shelter) {
-            if (pet instanceof OrganicPet) {
-                ((OrganicPet) pet).boredom();
-            }
-            if (pet instanceof RoboticPet) {
-                ((RoboticPet) pet).happy();
+    public void playWithAllKappaAtOnce() {
+        for (VirtualPet pets : virtualPets.values()){
+            if (pets instanceof VirtualKappa){
+                pets.playWithPet();
             }
         }
     }
 
-    public void tickAll() {
-        for (VirtualPet pet : shelter) {
-            pet.tick();
+    public void waterAllOrganicPetsAtOnce() {
+        for (VirtualPet pets : virtualPets.values()){
+            if (pets instanceof OrganicPet){
+                ((OrganicPet) pets).giveOrganicPetWater();
+            }
         }
     }
 
-    public VirtualPet findPetByName(String name) {
-        for (VirtualPet pet : shelter) {
-            if (pet.getName().equalsIgnoreCase(name)) {
-                return pet;
+    public void feedAllOrganicPetsAtOnce() {
+        for (VirtualPet pets : virtualPets.values()){
+            if (pets instanceof OrganicPet){
+                ((OrganicPet) pets).feedOrganicPet();
             }
         }
-        return null;
     }
 
-    public void showStatusForAll() {
-        for (VirtualPet pet : shelter) {
-            pet.showStatus();
+    public void cleanAllOrganicFoxCagesAtOnce() {
+        for (VirtualPet pets : virtualPets.values()) {
+            if (pets instanceof OrganicFox) {
+                ((OrganicPet) pets).cleanOrganicFoxCage();
             }
         }
-    
+
+
+    }
+
+    public void oilALlRobotsAtOnce() {
+        for (VirtualPet pets : virtualPets.values()){
+            if (pets instanceof RoboticPet){
+                ((RoboticPet) pets).oilRobotPet();
+            }
+        }
+    }
+
+    public void tickForAllPetsAtOnce() {
+        for (VirtualPet pets : virtualPets.values()) {
+            pets.tick();
+        }
+    }
 }
 
 
